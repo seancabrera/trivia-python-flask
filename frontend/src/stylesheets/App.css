@@ -9,6 +9,11 @@
   padding-left: 5%;
 }
 
+.App-header > h1,
+.App-header > h2 {
+  cursor: pointer;
+}
+
 .App-header > h1 {
   color: dodgerblue;
 }
@@ -24,6 +29,7 @@ h2 {
 li {
   text-align: center;
   margin: 5px 0px;
+  cursor: pointer;
 }
 
 ul {
