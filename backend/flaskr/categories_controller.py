@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, abort
 from models import Category, Question
 
 categories_bp = Blueprint('categories', __name__)
@@ -16,6 +16,8 @@ def get_categories():
 
 @categories_bp.route('/categories/<int:category_id>/questions', methods=['GET'])
 def get_questions_for_category(category_id):
+    if not Category.query.get(category_id):
+        abort(404)
     questions = Question.query.filter(Question.category == str(category_id)).all()
     return jsonify({
         'success': True,

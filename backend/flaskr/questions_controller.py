@@ -35,6 +35,8 @@ def delete_question(question_id):
 @questions_bp.route('/questions', methods=['POST'])
 def create_or_search_questions():
     request_body = request.get_json()
+    if request_body is None:
+        abort(400)
     search_term = request_body.get('searchTerm')
 
     if search_term is not None:
