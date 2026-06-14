@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from flaskr import create_app
@@ -11,7 +12,7 @@ class TriviaTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.database_name = "trivia_test"
         self.database_user = "postgres"
-        self.database_password = "postgres"
+        self.database_password = os.environ.get('TRIVIA_DB_PASSWORD')
         self.database_host = "localhost:5432"
         self.database_path = f"postgresql://{self.database_user}:{self.database_password}@{self.database_host}/{self.database_name}"
 
