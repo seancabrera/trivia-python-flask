@@ -64,7 +64,7 @@ def _create_question(request_body):
     return jsonify({
         'success': True,
         'created': new_question.id
-    })
+    }), 201
 
 
 def _search_questions(request_body):
