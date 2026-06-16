@@ -1,10 +1,10 @@
 import os
 from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
-database_name = 'trivia'
-database_user = 'postgres'
+database_name = os.environ.get('TRIVIA_DB_NAME')
+database_user = os.environ.get('TRIVIA_DB_USER')
 database_password = os.environ.get('TRIVIA_DB_PASSWORD')
-database_host = 'localhost:5432'
+database_host = os.environ.get('TRIVIA_DB_HOST')
 database_path = f'postgresql://{database_user}:{database_password}@{database_host}/{database_name}'
 
 db = SQLAlchemy()

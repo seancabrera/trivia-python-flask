@@ -10,10 +10,10 @@ class TriviaTestCase(unittest.TestCase):
 
     def setUp(self):
         """Define test variables and initialize app."""
-        self.database_name = "trivia_test"
-        self.database_user = "postgres"
+        self.database_name = os.environ.get('TRIVIA_TEST_DB_NAME')
+        self.database_user = os.environ.get('TRIVIA_DB_USER')
         self.database_password = os.environ.get('TRIVIA_DB_PASSWORD')
-        self.database_host = "localhost:5432"
+        self.database_host = os.environ.get('TRIVIA_DB_HOST')
         self.database_path = f"postgresql://{self.database_user}:{self.database_password}@{self.database_host}/{self.database_name}"
 
         # Create app with the test configuration
@@ -85,7 +85,7 @@ class TriviaTestCase(unittest.TestCase):
         })
         data = res.get_json()
 
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertTrue(data['success'])
         self.assertIsNotNone(data['created'])
 
